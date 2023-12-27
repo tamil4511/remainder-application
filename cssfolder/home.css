@@ -1,0 +1,65 @@
+body {
+    font-family:'Montserrat' !important;
+}
+@keyframes icox {
+    to {
+        transform: rotate(500deg);
+    }
+}
+#icox:hover {
+    animation: icox 1s linear infinite;
+} 
+
+@media (min-width: 768px) {
+    .w-md-50 {
+        width:100% !important;
+    }
+    .ans
+    {
+        width: 70% !important;
+    }
+    .content
+    {
+        padding: 0 40px;
+    }
+    #contain-2
+    {
+        width: 100% !important;
+    }
+}
+@media (min-width: 1024px) {
+    .w-md-50 {
+        width:50% !important;
+    }
+    .ans{
+        width: 50!important;
+    }
+    #contain-2
+    {
+        width: 100% !important;
+    }
+}
+select {
+    width: 100%;
+    height: 50px;
+    border: none;
+}
+.offcanvas-body button
+{
+    background-color: #091c79; 
+    height: 60px;
+     color: white;
+}
+
+.con img{
+    cursor: pointer;
+}
+#offcanvasExample {
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+

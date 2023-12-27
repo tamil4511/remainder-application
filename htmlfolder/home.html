@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
+
+
+        <!-- ------------------------------------------bootstrap cdn--------------------------------- -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <!-- ----------------------------------------font- awesome of montserrat-------------------------------- -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+        
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@latest/font/bootstrap-icons.css" rel="stylesheet">
+        
+
+
+        <!--------------------------jquery ---------------------------->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <!----------------------------notify js cdn ---------------------------------->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
+
+        <!-----------------------------css and js folder connections------------------------------------->
+        <script src="../jsfolder/profile.js"></script>
+        <script src="../jsfolder/task.js"></script>
+        <link rel="stylesheet" href="../cssfolder/home.css">
+    </head>
+    
+    <body>
+    <!-- this is for offcanvas section of that page -->
+
+    <div class="offcanvas offcanvas-start off_slide" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <button type="button" id="close" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive"></button>
+        </div>
+        <div class="offcanvas-body">
+            <center>
+                <button class="w-75 d-grid rounded-3 pt-2 fs-4 my-4 shadow" onclick="visible('contain-1', 'contain-2','contain-3')"
+                    name="home" style="background-color: #113A5D; color: whitesmoke;">HOME</button>
+                <button class="w-75 d-grid rounded-3 pt-2 fs-4 my-4 shadow" onclick="visible('contain-2', 'contain-1','contain-3')"
+                    name="profile" style="background-color: #113A5D; color: whitesmoke;">PROFILE</button>
+                <button class="w-75 d-grid rounded-3 pt-2 fs-4 my-4 shadow" name="tasks" onclick="visible('contain-3','contain-1','contain-2')" style="background-color: #113A5D; color: whitesmoke;">TASKS</button>
+                <button class="w-75 d-grid rounded-3 pt-2 fs-4 my-4 shadow" id="logout" name="logouot" style="background-color: #113A5D; color: whitesmoke;">LOGOUT</button>
+            </center>
+        </div>
+    </div>
+
+
+
+    <!----------------------- this is home reminder section --------------------------------->
+    <div class="container-fluid">
+        <div class="navbar">
+            <div class="content  bg-secondary w-100">
+                <div class="col  align-items-center d-flex justify-content-between">
+                    <i id="icox" class="fas fa-cog fs-2 mx-4" data-bs-toggle="offcanvas" href="#offcanvasExample"
+                        role="button" aria-controls="offcanvasExample"></i>
+                    <img id="changeImage" class="rounded-circle float-end mx-4 my-2 shadow-sm"
+                        src="../imagefolder/default-profile.jpg" alt="" style="width: 45px; height: 45px;">
+                </div>
+            </div>
+        </div>
+        <div class="container w-100 w-md-50" id="contain-1">
+            <div class="row task-container  px-3 rounded-4 shadow" id="task-container" style="background-color: #113A5D; color: whitesmoke;">
+                <!-- <div class="row">
+                    <h4>TODAYS REMINDER</h4>
+                </div>
+                <div class="row">
+                    <h4 style="font-weight: 800;">TASK CATEGORY :</h4>
+                <h4 id="task-category"></h4>
+                </div>
+                <div class="row">
+                    <h4 class="my-2 " style="font-weight: 800;">ABOUT TASK :</h2>
+                        <h4 id="about-task" class="mb-3"></h4>
+                </div> -->
+            </div>
+            <!---------------------------------create memory section ------------------------------------->
+            <center>
+                <section class="ans justify-content-center mt-5">
+                    <div class="div bg-body-secondary w-100  p-2 px-4 rounded-5">
+                        <h3 class="mx-5 mt-3" style="font-weight: 800;">CREATE A MEMORY</h1>
+                            <hr class="mb-5 w-75 border-5" style="color:black">
+                            <form id="task">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="form-floating">
+                                            <input type="date" class="form-control shadow-none" id="taskdate"
+                                                name="taskdate" placeholder="date"
+                                                style="background-color:#e0e0e0">
+                                            <label for="floatingInput" class="ms-2"
+                                                style="mix-blend-mode: multiply;">Enter date</label>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-4">
+                                        <h4>Enter the type</h4>
+                                        <div class="form-floating" style="width: 1000px" ;>
+                                            <select name="category" id="category" style="background-color:#e0e0e0">
+                                                <option value="sports">Sports</option>
+                                                <option value="Education">Education</option>
+                                                <option value="task">Task</option>
+                                                <option value="personal" selected>Personal</option>
+                                                <option value="others">Others</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <h4>About Reminder</h4>
+                                        <div class="form-floating">
+                                            <textarea name="abouttask" id="abouttask" class="w-100" cols="30" rows="10"
+                                                placeholder="Enter the content"
+                                                style="background-color:#e0e0e0"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row py-3 mx-5 w-100">
+                                        <button class="btn w-50 rounded-3 mx-5 p-2" style="background-color: #113A5D; color: whitesmoke;" type="submit">SUBMIT</button>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                </section>
+            </center>
+        </div>
+    </div>
+    <!------------------------------------ this is profile sections ------------------------------------>
+    <div class="container mt-4  vh-100" id="contain-2">
+        <div class="row">
+            <div class="col-12 col-lg-5">
+                <div class="text-center bg-body-secondary rounded-5">
+                    <div class="d-flex justify-content-center pt-4">
+                        <section style="position: relative;" class="d-flex justify-content-center">
+                            <form action="" id="image_upload" enctype="multipart/form-data">
+                                <label for="profile-image-upload" style="position: relative;">
+                                    <img src="../imagefolder/default-profile.jpg" id="profileImage" class="rounded-circle position-relative" alt="" style="width: 350px; height: 350px;">
+                                    <div class="con">
+                                        <img src="../imagefolder/icons8-plus.svg" class="position-absolute rounded-circle" alt="" style="width: 55px; height: 55px; bottom: 15px; right: 75px; background-color: white; cursor: pointer;">
+                                    </div>
+                                </label>
+                                <h6 class="my-2 p-3" style="color:red">NOTE:<span style="color:black">select the image using + sign, then click the upload button</span></h6>
+
+                                <input type="file" id="profile-image-upload" style="display: none;" />
+                                <button type="button" onclick="uploadImage()" style="background-color: #113A5D; color: whitesmoke;" class="rounded-2 p-2">Upload Image</button>
+                            </form>
+                            
+                            
+                        </section>
+                    </div>
+                    <h1 class="pt-3" id="user-name"></h1>
+                    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#target2" style="background-color: #113A5D; color: whitesmoke;">Edit Profile</button>
+                </div>
+                <div class="col bg-body-secondary">
+                    <div class="accordion accordion-flush mt-5" id="accordionFlushExample">
+                        <div class="accordion-item mb-5">
+                            <h2 class="accordion-header" id="flush-headingThree">
+                                <button class="accordion-button collapsed bg-body-secondary rounded-4" id="cpassword-close" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                    aria-expanded="false" aria-controls="flush-collapseThree">
+                                    Change Password
+                                </button>
+                            </h2>
+
+                            <!---------------------password changing sections ---------------------------------->
+                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                <form id="changepassword">
+                                    <div class="row py-3 px-4">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control shadow-none" id="oldpassword"
+                                                name="username" placeholder="oldpassword"
+                                                style="background-color:#e0e0e0">
+                                            <label for="floatingInput" class="ms-2"
+                                                style="mix-blend-mode: multiply;">Old Password</label>
+                                        </div>
+                                    </div>
+                                    <div class="row py-3 px-4">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control shadow-none" id="newpassword"
+                                                name="username" placeholder="newpassword"
+                                                style="background-color:#e0e0e0">
+                                            <label for="floatingInput" class="ms-2"
+                                                style="mix-blend-mode: multiply;">Retype the Password</label>
+                                        </div>
+                                    </div>
+                                    <div class="row btn-span px-5 py-3">
+                                        <button class="btn shadow py-3 px-2 rounded-4" onclick="password(event)" type="button" id="button"
+                                        style="background-color: #113A5D; color: whitesmoke;">Change Password</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col vh-100">
+                <!-- this is personal details of profile -->
+                <div
+                    class="profile bg-body-secondary col text-center justify-content-center align-items-center mt-3 pt-3 rounded-5">
+                    <div class="row m-3">
+                        <span class=" fw-bold fs-1 ">PERSONAL DETAILS</span>
+                    </div>
+                    <table class="table text-center rounded-5" style="background-color: #fff1f1;">
+                        <tbody>
+                            <tr>
+                                <th class="py-4">First Name</th>
+                                <td class="py-4" id="firstname1">NA</td>
+                            </tr>
+                            <tr>
+                                <th class="py-4">Last Name</th>
+                                <td class="py-4" id="lastname1">NA</td>
+                            </tr>
+                            <tr>
+                                <th class="py-4">Mobileno</th>
+                                <td class="py-4" id="mobileno1">NA</td>
+                            </tr>
+                            <tr>
+                                <th class="py-4">DOB</th>
+                                <td class="py-4" id="dob1">NA</td>
+                            </tr>
+                            <tr>
+                                <th class="py-4">Address</th>
+                                <td class="py-4" id="address1">NA</td>
+                            </tr>
+                            <tr>
+                                <th class="py-4">District</th>
+                                <td class="py-4" id="district1">NA</td>
+                            </tr>
+                            <tr>
+                                <th class="py-4">Pincode</th>
+                                <td class="py-4" id="pincode1">NA</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- Modal for changing the personal details ------------------>
+    <div class="modal fade" id="target2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Profile</h1>
+                    <button type="button" class="btn-close" id="close-model" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="profile">
+                        <div class="row p-2">
+                            <div class="form-floating">
+                                <input type="text" class="form-control shadow-none" id="firstname" name="firstname"
+                                    placeholder="name@example.com" style="background-color:#ECE6E6">
+                                <label for="floatingInput" class="ms-2" style="mix-blend-mode: multiply;">First
+                                    Name</label>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="form-floating">
+                                <input type="text" class="form-control shadow-none" id="lastname" name="lastname"
+                                    placeholder="name@example.com" style="background-color:#ECE6E6">
+                                <label for="floatingInput" class="ms-2" style="mix-blend-mode: multiply;">Last
+                                    Name</label>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="form-floating">
+                                <input type="text" class="form-control shadow-none" id="mobileno" name="mobileno"
+                                    placeholder="Password" style="background-color:#ECE6E6">
+                                <label for="floatingPassword" class="ms-2"
+                                    style="mix-blend-mode: multiply;">mobileno</label>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="form-floating">
+                                <input type="date" class="form-control shadow-none" id="dob" name="dob"
+                                    placeholder="Password" style="background-color:#ECE6E6">
+                                <label for="floatingPassword" class="ms-2" style="mix-blend-mode: multiply;">dob</label>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="form-floating">
+                                <input type="text" class="form-control shadow-none" id="address" name="address"
+                                    placeholder="name@example.com" style="background-color:#ECE6E6">
+                                <label for="floatingInput" class="ms-2"
+                                    style="mix-blend-mode: multiply;">LandMark</label>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="form-floating">
+                                <input type="text" class="form-control shadow-none" id="district" name="district"
+                                    placeholder="name@example.com" style="background-color:#ECE6E6">
+                                <label for="floatingInput" class="ms-2"
+                                    style="mix-blend-mode: multiply;">District</label>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="form-floating">
+                                <input type="text" class="form-control shadow-none" id="pincode" name="pincode"
+                                    placeholder="name@example.com" style="background-color:#ECE6E6">
+                                <label for="floatingInput" class="ms-2"
+                                    style="mix-blend-mode: multiply;">pincode</label>
+                            </div>
+                        </div>
+                        <div class="row btn-span px-5 py-2">
+                            <button class="btn btn-primary shadow py-3 mx-5 px-5 w-50" type="button" onclick="ts(event)" id="btn">update</button>
+                        </div>  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!----------------------this is format for printing all the tasks ------------------------>
+    <div class="container" id="contain-3">
+        <div class="alltaskcontainer row">
+            <!-- <div class="col-12 col-md-6">
+                <div class="card m-3" style="background-color: #113A5D; color: white;">
+                    <div class="datas px-5 py-3">
+                        <h2 style="font-weight: 800;"class="py-1">DATA</h2>
+                        <h3 class="bg-body-secondary p-2 rounded-3" style="color: black;">date</h3>
+                        <h2 style="font-weight: 800;" class="my-3">CATEGORY</h2>
+                        <h3 class="bg-body-secondary p-2 rounded-3" style="color: black;">category</h3>
+                        <h1 style="font-weight: 800;" class="my-2">ABOUT TASK</h1>
+                        <h4 style="text-align: justify; color: black;" class="bg-body-secondary p-blue">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus laudantium nostrum, quibusdam quisquam dolorum enim nobis, ipsum quaerat repudiandae quis veniam, debitis reiciendis iste animi aperiam expedita ea cum culpa.</h4>
+                        <div class="col d-flex justify-content-end">
+                            <button class="btn btn-primary my-3 mx-2" style="width: 50%;">EDIT</button>
+                            <button class="btn btn-danger my-3 mx-2" style="width: 50%;">DELETE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</div>
+<!--------------model for task updating ------------------------>
+<div class="modal fade" id="target1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit task</h1>
+                    <button type="button" class="btn-close" id="close11" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="edittask_details">
+                        <div class="row p-2">
+                            <div class="form-floating">
+                                <input type="date" class="form-control shadow-none" id="etdate" name="etdate"
+                                    placeholder="taskdate" style="background-color:#ECE6E6">
+                                <label for="floatingInput" class="ms-2" style="mix-blend-mode: multiply;">Enter date</label>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="form-floating">
+                                <div class="row mt-4">
+                                    <h4>Enter the type</h4>
+                                    <div class="form-floating" style="width: 1000px" ;>
+                                        <select name="etcategory" id="etcategory" style="background-color:#e0e0e0">
+                                            <option value="sports">Sports</option>
+                                            <option value="Education">Education</option>
+                                            <option value="task">Task</option>
+                                            <option value="personal" selected>Personal</option>
+                                            <option value="others">Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="form-floating">
+                                <div class="form-floating">
+                                    <textarea name="etabouttask" id="etabouttask" class="w-100" cols="30" rows="10"
+                                        placeholder="Enter the content"
+                                        style="background-color:#e0e0e0"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row btn-span px-5 py-2 d-flex justify-content-center">
+                            <button class="btn btn-primary shadow w-25 mx-3" type="submit" name="update_btn"  id="">update</button>
+                            <button class="btn btn-danger shadow w-25 mx-3" type="button" onclick="close2()" id="btn">cancel</button>
+                             
+                        </div>  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+        // script for changing the offcanvas buttons actions
+            var s = document.getElementById("contain-2");
+            var t = document.getElementById("contain-3");
+            s.style.display = 'none';
+            t.style.display = 'none';
+            function visible(showId,hideId1,hideId2) {
+                var showElement = document.getElementById(showId);
+                var hideElement = document.getElementById(hideId1);
+                var hideElement2 = document.getElementById(hideId2);
+                document.getElementById('close').click();
+                if (showElement && hideElement && hideElement2) {
+                    showElement.style.display = 'block';
+                    hideElement.style.display = 'none';
+                    hideElement2.style.display = 'none';
+                    document.getElementById('close').click(); // to close the off canvas close button
+                }
+            }
+
+
+
+    // this is for the profile section
+    //image upload
+    function uploadImage() {
+    console.log('uploadImage');
+    var formData = new FormData();
+    var fileInput = document.getElementById('profile-image-upload');
+    formData.append('file', fileInput.files[0]);
+    formData.append('uploadImage', true);
+
+    $.ajax({
+        url: '../phpfolder/upload.php',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            if (response.status === 200) {
+                alert(response.message);
+                image();
+            } else {
+                alert(response.message);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX request failed:', status, error);
+            console.log(xhr.responseText); // Log the full response for additional details
+            alert('AJAX request failed. Please check the console for more information.');
+        }
+    });
+}
+
+
+//ajax for retriving the image form the database
+function image() {
+    $.ajax({
+        url: '../phpfolder/retrieve.php',
+        type: 'GET',
+        data: {
+            'image': true
+        },
+        success: function(response) {
+            if (response.status === 200) {
+                var profileImageSrc = response.image ? '../uploads/' + response.image : '../imagefolder/default-profile.jpg';
+                document.getElementById('changeImage').src = profileImageSrc;
+                document.getElementById('profileImage').src = profileImageSrc;
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX request failed:', status, error);
+            console.log(xhr.responseText); // Log the full response for additional details
+            alert('AJAX request failed. Please check the console for more information.');
+        }
+    });
+}
+
+
+//closing the task cancel button on all task section
+function close2()
+{
+document.getElementById('close11').click();
+}
+    </script>
+
+
+</body>
+
+</html>
