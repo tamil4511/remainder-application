@@ -1,4 +1,4 @@
-# Memory Reminder App
+# REMINDER APPLICATION
 
 ## Overview
 
@@ -22,15 +22,5 @@ Organize memories by creating custom categories. This feature helps you easily m
 
 Modify or delete memories as needed. The app provides flexibility in managing your memories over time.
 
-## Getting Started
 
-### Prerequisites
 
-Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/memory-reminder-app.git
