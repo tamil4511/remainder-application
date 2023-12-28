@@ -18,10 +18,6 @@ Associate memories with specific dates to receive timely reminders and ensure yo
 
 Categorize your memories by selecting from a fixed set of predefined options. This feature helps you easily manage and filter memories based on different aspects of your life.
 
-### 3. Fixed Categories
-
-Categorize your memories by selecting from a fixed set of predefined options. This feature helps you easily manage and filter memories based on different aspects of your life.
-
 #### Available Categories:
 
 - Sports
