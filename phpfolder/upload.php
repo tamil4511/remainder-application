@@ -11,16 +11,54 @@ if (isset($_POST['uploadImage'])) {
     $target_file = $target_dir . basename($_FILES["file"]["name"]);
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $extensions_arr = array("jpg", "jpeg", "png", "gif");
-
     if (in_array($imageFileType, $extensions_arr)) {
-        $query = "UPDATE profile SET image='$name' WHERE email='$s'";
-        mysqli_query($con, $query);
-        move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $name);
-        $res = [
-            'status' => 200,
-            'message' => 'Image uploaded successfully',
-        ];
-        echo json_encode($res);
+        $qu="select * from profile where email='$s'";
+        $r=mysqli_query($con,$qu);
+        $row=mysqli_num_rows($r);
+        if($row==1)
+        {
+            $q="update profile set image='$name' where email='$s'";
+            $r=mysqli_query($con,$q);
+            if($r)
+            {
+                move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $name);
+                $res = [
+                    'status' => 200,
+                    'message' => 'Image uploaded successfully.',
+                ];
+                echo json_encode($res);
+            }
+            else
+            {
+                $res = [
+                    'status' => 201,
+                    'message' => 'Image not uploaded. Invalid file type.',
+                ];
+                echo json_encode($res);
+            }
+        }
+        else
+        {
+            $q="insert into profile(email,image) values('$s','$name')";
+            $r=mysqli_query($con,$q);
+            if($r)
+            {
+                move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $name);
+                $res = [
+                    'status' => 200,
+                    'message' => 'Image uploaded successfully',
+                ];
+                echo json_encode($res);
+            }
+            else
+            {
+                $res = [
+                    'status' => 201,
+                    'message' => 'Image not uploaded. Invalid file type.',
+                ];
+                echo json_encode($res);
+            }
+        }
     } else {
         $res = [
             'status' => 201,
